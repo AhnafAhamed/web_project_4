@@ -4,4 +4,13 @@
   font-weight: 500;
   margin: 0;
   margin-bottom: 16px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+@media (max-width: 854px) {
+  .profile__title {
+    font-size: 22px;
+    margin-bottom: 14px;
+  }
 }

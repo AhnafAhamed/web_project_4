@@ -2,6 +2,7 @@
 @import url(../blocks/body/body.css);
 @import url(../blocks/homepage/homepage.css);
 @import url(../blocks/header/header.css);
+@import url(../blocks/header/__logo/header__logo.css);
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__image/profile__image.css);
 @import url(../blocks/profile/__info/profile__info.css);
