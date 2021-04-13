@@ -1,0 +1,7 @@
+.elements__heart-icon:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+.elements__heart-icon:active {
+  fill: #000;
+}

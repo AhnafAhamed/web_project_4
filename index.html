@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="vendor/normalize.css" />
     <link rel="stylesheet" href="page/index.css" />
   </head>
+
   <body class="body">
     <!-- The whole page -->
     <div class="homepage">
@@ -70,7 +71,7 @@
           <!-- Elemenst Card  -->
           <li class="elements__card">
             <img
-              src="./images/lake louise.svg"
+              src="./images/lake-louise.svg"
               alt="Lake Louise"
               class="elements__image"
             />
@@ -86,7 +87,7 @@
           <!-- Elemenst Card  -->
           <li class="elements__card">
             <img
-              src="./images/bald mountains.svg"
+              src="./images/bald-mountains.svg"
               alt="Bald Mountains"
               class="elements__image"
             />
@@ -148,11 +149,37 @@
             </div>
           </li>
         </ul>
+        <!-- Popup Card  -->
+        <div class="popup">
+          <div class="popup__container">
+            <h3 class="popup__title">Edit Profile</h3>
+            <input
+              type="text"
+              class="popup__input popup__input_value_name"
+              placeholder="Name"
+              value="hi"
+            />
+            <input
+              type="text"
+              class="popup__input popup__input_value_about"
+              placeholder="About Me"
+              value=""
+            />
+            <button type="submit" class="popup__btn">Save</button>
+            <img
+              src="./images/close-btn.svg"
+              alt="Close Button"
+              class="popup__close-btn"
+            />
+          </div>
+        </div>
       </main>
       <!-- Footer  -->
       <footer class="footer">
         <p class="footer__text">© 2020 Around The U.S.</p>
       </footer>
     </div>
+    <div class="homepage__overlay"></div>
+    <script src="./app/script.js"></script>
   </body>
 </html>

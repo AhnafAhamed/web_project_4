@@ -7,6 +7,11 @@
   align-items: center;
   align-self: end;
   margin-bottom: 23px;
+  border-radius: 2px;
+}
+.profile__edit-button:hover {
+  cursor: pointer;
+  opacity: 0.6;
 }
 @media (max-width: 854px) {
   .profile__edit-button {

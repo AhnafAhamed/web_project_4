@@ -1,0 +1,8 @@
+.popup__input {
+  border: none;
+  border-bottom: 1px solid rgb(0, 0, 0, 0.2);
+  padding-bottom: 13px;
+}
+.popup__input:not(:last-of-type) {
+  margin-bottom: 29px;
+}
