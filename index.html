@@ -5,181 +5,170 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Around the US</title>
-    <link rel="stylesheet" href="vendor/normalize.css" />
     <link rel="stylesheet" href="page/index.css" />
   </head>
 
   <body class="body">
-    <!-- The whole page -->
+    <header class="header">
+      <img
+        class="header__logo"
+        src="./images/logo.svg"
+        alt="Around the US Logo"
+      />
+    </header>
     <div class="homepage">
-      <!-- Header -->
-      <header class="header">
-        <img
-          class="header__logo"
-          src="./images/logo.svg"
-          alt="Around the US Logo"
-        />
-      </header>
-      <!-- Main Content  -->
       <main class="main">
-        <!-- Profile -->
         <div class="profile">
           <img
-            src="./images/jacq.svg"
+            src="./images/jacq.jpg"
             alt="Image of Jacques Cousteau"
             class="profile__image"
           />
 
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
-            <div class="profile__edit-button">
-              <img
-                class="profile__edit-icon"
-                src="./images/edit-btn.svg"
-                alt="Edit Button"
-              />
-            </div>
+            <button
+              type="button"
+              class="profile__edit-button"
+              aria-label="Edit Button"
+            ></button>
             <p class="profile__tag">Explorer</p>
           </div>
-
-          <div class="profile__plus-button">
-            <img
-              src="./images/plus-btn.svg"
-              alt="Plus Button"
-              class="profile__plus-icon"
-            />
-          </div>
+          <button
+            type="button"
+            class="profile__plus-button"
+            aria-label="Plus Button"
+          ></button>
         </div>
-        <!-- Elements -->
-        <ul class="elements">
-          <!-- Elemenst Card  -->
-          <li class="elements__card">
-            <img
-              src="./images/yosemite.svg"
-              alt="Yosemite valley"
-              class="elements__image"
-            />
-            <div class="elements__info">
-              <h2 class="elements__title">Yosemite Valley</h2>
+        <section>
+          <ul class="elements">
+            <li class="elements__card">
               <img
-                class="elements__heart-icon"
-                src="./images/heart.svg"
-                alt="Heart Icon"
+                src="./images/yosemite.jpg"
+                alt="Yosemite valley"
+                class="elements__image"
               />
-            </div>
-          </li>
-          <!-- Elemenst Card  -->
-          <li class="elements__card">
-            <img
-              src="./images/lake-louise.svg"
-              alt="Lake Louise"
-              class="elements__image"
-            />
-            <div class="elements__info">
-              <h2 class="elements__title">Lake Louise</h2>
+              <div class="elements__info">
+                <h2 class="elements__title">Yosemite Valley</h2>
+                <button
+                  type="button"
+                  class="elements__heart-icon"
+                  aria-label="Heart Button"
+                ></button>
+              </div>
+            </li>
+            <li class="elements__card">
               <img
-                class="elements__heart-icon"
-                src="./images/heart.svg"
-                alt="Heart Icon"
+                src="./images/lake-louise.jpg"
+                alt="Lake Louise"
+                class="elements__image"
               />
-            </div>
-          </li>
-          <!-- Elemenst Card  -->
-          <li class="elements__card">
-            <img
-              src="./images/bald-mountains.svg"
-              alt="Bald Mountains"
-              class="elements__image"
-            />
-            <div class="elements__info">
-              <h2 class="elements__title">Bald Mountains</h2>
+              <div class="elements__info">
+                <h2 class="elements__title">Lake Louise</h2>
+                <button
+                  type="button"
+                  class="elements__heart-icon"
+                  aria-label="Heart Button"
+                ></button>
+              </div>
+            </li>
+            <li class="elements__card">
               <img
-                class="elements__heart-icon"
-                src="./images/heart.svg"
-                alt="Heart Icon"
+                src="./images/bald-mountains.jpg"
+                alt="Bald Mountains"
+                class="elements__image"
               />
-            </div>
-          </li>
-          <!-- Elemenst Card  -->
-          <li class="elements__card">
-            <img
-              src="./images/latemar.svg"
-              alt="Latemar"
-              class="elements__image"
-            />
-            <div class="elements__info">
-              <h2 class="elements__title">Latemar</h2>
+              <div class="elements__info">
+                <h2 class="elements__title">Bald Mountains</h2>
+                <button
+                  type="button"
+                  class="elements__heart-icon"
+                  aria-label="Heart Button"
+                ></button>
+              </div>
+            </li>
+            <li class="elements__card">
               <img
-                class="elements__heart-icon"
-                src="./images/heart.svg"
-                alt="Heart Icon"
+                src="./images/latemar.jpg"
+                alt="Latemar"
+                class="elements__image"
               />
-            </div>
-          </li>
-          <!-- Elemenst Card  -->
-          <li class="elements__card">
-            <img
-              src="./images/vanoise.svg"
-              alt="Vanoise National"
-              class="elements__image"
-            />
-            <div class="elements__info">
-              <h2 class="elements__title">Vanoise National Park</h2>
+              <div class="elements__info">
+                <h2 class="elements__title">Latemar</h2>
+                <button
+                  type="button"
+                  class="elements__heart-icon"
+                  aria-label="Heart Button"
+                ></button>
+              </div>
+            </li>
+            <li class="elements__card">
               <img
-                class="elements__heart-icon"
-                src="./images/heart.svg"
-                alt="Heart Icon"
+                src="./images/vanoise.jpg"
+                alt="Vanoise National"
+                class="elements__image"
               />
-            </div>
-          </li>
-          <!-- Elemenst Card  -->
-          <li class="elements__card">
-            <img
-              src="./images/lago.svg"
-              alt="Lago di Braies"
-              class="elements__image"
-            />
-            <div class="elements__info">
-              <h2 class="elements__title">Lago di Braies</h2>
+              <div class="elements__info">
+                <h2 class="elements__title">Vanoise National Park</h2>
+                <button
+                  type="button"
+                  class="elements__heart-icon"
+                  aria-label="Heart Button"
+                ></button>
+              </div>
+            </li>
+            <li class="elements__card">
               <img
-                class="elements__heart-icon"
-                src="./images/heart.svg"
-                alt="Heart Icon"
+                src="./images/lago.jpg"
+                alt="Lago di Braies"
+                class="elements__image"
               />
-            </div>
-          </li>
-        </ul>
-        <!-- Popup Card  -->
-        <div class="popup">
-          <div class="popup__container">
-            <h3 class="popup__title">Edit Profile</h3>
+              <div class="elements__info">
+                <h2 class="elements__title">Lago di Braies</h2>
+                <button
+                  type="button"
+                  class="elements__heart-icon"
+                  aria-label="Heart Button"
+                ></button>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">© 2020 Around The U.S.</p>
+      </footer>
+      <div class="popup">
+        <div class="popup__container">
+          <h3 class="popup__title">Edit Profile</h3>
+          <form method="POST" class="popup__form" name="profileData">
             <input
+              name="profile-name"
               type="text"
               class="popup__input popup__input_value_name"
               placeholder="Name"
-              value="hi"
+              value=""
             />
             <input
+              name="profile-tag"
               type="text"
               class="popup__input popup__input_value_about"
               placeholder="About Me"
               value=""
             />
-            <button type="submit" class="popup__btn">Save</button>
-            <img
-              src="./images/close-btn.svg"
-              alt="Close Button"
-              class="popup__close-btn"
-            />
-          </div>
+            <button type="submit" class="popup__btn" aria-label="Save Button">
+              Save
+            </button>
+          </form>
+          <button
+            type="button"
+            class="popup__close-btn"
+            aria-label="Close Button"
+          ></button>
         </div>
-      </main>
-      <!-- Footer  -->
-      <footer class="footer">
-        <p class="footer__text">© 2020 Around The U.S.</p>
-      </footer>
+      </div>
     </div>
-    <div class="overlay"></div>
     <script src="./app/script.js"></script>
   </body>
 </html>
