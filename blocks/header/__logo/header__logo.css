@@ -5,7 +5,7 @@
   }
 }
 @media (max-width: 880px) {
-  .header {
+  .header__logo {
     padding-left: 27px;
   }
 }
