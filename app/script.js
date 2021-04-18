@@ -5,7 +5,7 @@ let profileTitle = document.querySelector(".profile__title");
 let profileTag = document.querySelector(".profile__tag");
 let inputName = document.querySelector(".popup__input_value_name");
 let inputAbout = document.querySelector(".popup__input_value_about");
-let submitBtn = document.querySelector(".popup__btn");
+let popupForm = document.querySelector(".popup__form");
 
 function popupOpen() {
   popup.classList.add("popup_open");
@@ -26,4 +26,4 @@ editBtn.addEventListener("click", popupOpen);
 
 closeBtn.addEventListener("click", popupClose);
 
-submitBtn.addEventListener("click", submitForm);
+popupForm.addEventListener("submit", submitForm);
