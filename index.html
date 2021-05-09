@@ -41,108 +41,22 @@
           ></button>
         </section>
         <section>
-          <ul class="elements">
-            <li class="elements__card">
-              <img
-                src="./images/yosemite.jpg"
-                alt="Yosemite valley"
-                class="elements__image"
-              />
-              <div class="elements__info">
-                <h2 class="elements__title">Yosemite Valley</h2>
-                <button
-                  type="button"
-                  class="elements__heart-icon"
-                  aria-label="Heart Button"
-                ></button>
-              </div>
-            </li>
-            <li class="elements__card">
-              <img
-                src="./images/lake-louise.jpg"
-                alt="Lake Louise"
-                class="elements__image"
-              />
-              <div class="elements__info">
-                <h2 class="elements__title">Lake Louise</h2>
-                <button
-                  type="button"
-                  class="elements__heart-icon"
-                  aria-label="Heart Button"
-                ></button>
-              </div>
-            </li>
-            <li class="elements__card">
-              <img
-                src="./images/bald-mountains.jpg"
-                alt="Bald Mountains"
-                class="elements__image"
-              />
-              <div class="elements__info">
-                <h2 class="elements__title">Bald Mountains</h2>
-                <button
-                  type="button"
-                  class="elements__heart-icon"
-                  aria-label="Heart Button"
-                ></button>
-              </div>
-            </li>
-            <li class="elements__card">
-              <img
-                src="./images/latemar.jpg"
-                alt="Latemar"
-                class="elements__image"
-              />
-              <div class="elements__info">
-                <h2 class="elements__title">Latemar</h2>
-                <button
-                  type="button"
-                  class="elements__heart-icon"
-                  aria-label="Heart Button"
-                ></button>
-              </div>
-            </li>
-            <li class="elements__card">
-              <img
-                src="./images/vanoise.jpg"
-                alt="Vanoise National"
-                class="elements__image"
-              />
-              <div class="elements__info">
-                <h2 class="elements__title">Vanoise National Park</h2>
-                <button
-                  type="button"
-                  class="elements__heart-icon"
-                  aria-label="Heart Button"
-                ></button>
-              </div>
-            </li>
-            <li class="elements__card">
-              <img
-                src="./images/lago.jpg"
-                alt="Lago di Braies"
-                class="elements__image"
-              />
-              <div class="elements__info">
-                <h2 class="elements__title">Lago di Braies</h2>
-                <button
-                  type="button"
-                  class="elements__heart-icon"
-                  aria-label="Heart Button"
-                ></button>
-              </div>
-            </li>
-          </ul>
+          <ul class="elements"></ul>
         </section>
       </main>
 
       <footer class="footer">
         <p class="footer__text">© 2020 Around The U.S.</p>
       </footer>
-      <div class="popup">
+      <!-- Popup Profile  -->
+      <div class="popup popup_profile">
         <div class="popup__container">
           <h3 class="popup__title">Edit Profile</h3>
-          <form method="POST" class="popup__form" name="profileData">
+          <form
+            method="POST"
+            class="popup__form popup__form_profile"
+            name="profileData"
+          >
             <input
               name="profile-name"
               type="text"
@@ -163,12 +77,78 @@
           </form>
           <button
             type="button"
-            class="popup__close-btn"
+            class="popup__close-btn popup__close-btn-profile"
+            aria-label="Close Button"
+          ></button>
+        </div>
+      </div>
+      <!-- Popup card  -->
+      <div class="popup popup_card">
+        <div class="popup__container">
+          <h3 class="popup__title">New Place</h3>
+          <form
+            method="POST"
+            class="popup__form popup__form_card"
+            name="newPlace"
+          >
+            <input
+              name="place-title"
+              type="text"
+              class="popup__input popup__input_place_name"
+              placeholder="Name"
+              value=""
+            />
+            <input
+              name="image-url"
+              type="text"
+              class="popup__input popup__input_place_image-url"
+              placeholder="Image URL"
+              value=""
+            />
+            <button type="submit" class="popup__btn" aria-label="Save Button">
+              Save
+            </button>
+          </form>
+          <button
+            type="button"
+            class="popup__close-btn popup__close-btn-card"
             aria-label="Close Button"
           ></button>
         </div>
       </div>
     </div>
+
+    <div class="popup popup_image-expanded">
+      <div class="image-expanded">
+        <div class="image-expanded__conatainer">
+          <img src="" alt="" class="image-expanded__image" />
+          <h2 class="image-expanded__title"></h2>
+        </div>
+        <button
+          class="popup__close-btn popup__close-btn-image-expanded"
+          type="button"
+        ></button>
+      </div>
+    </div>
+
+    <template id="cards">
+      <li class="elements__card">
+        <img src="" alt="" class="elements__image" />
+        <div class="elements__info">
+          <h2 class="elements__title"></h2>
+          <button
+            type="button"
+            class="elements__heart-icon"
+            aria-label="Heart Button"
+          ></button>
+        </div>
+        <button
+          class="elements__delete-icon"
+          type="button"
+          aria-label="Delete Button"
+        ></button>
+      </li>
+    </template>
     <script src="./app/script.js"></script>
   </body>
 </html>
