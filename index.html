@@ -63,6 +63,7 @@
               class="popup__input popup__input_value_name"
               placeholder="Name"
               value=""
+              required
             />
             <input
               name="profile-tag"
@@ -70,6 +71,7 @@
               class="popup__input popup__input_value_about"
               placeholder="About Me"
               value=""
+              required
             />
             <button type="submit" class="popup__btn" aria-label="Save Button">
               Save
@@ -97,13 +99,15 @@
               class="popup__input popup__input_place_name"
               placeholder="Name"
               value=""
+              required
             />
             <input
               name="image-url"
-              type="text"
+              type="url"
               class="popup__input popup__input_place_image-url"
               placeholder="Image URL"
               value=""
+              required
             />
             <button type="submit" class="popup__btn" aria-label="Save Button">
               Save
@@ -120,14 +124,15 @@
 
     <div class="popup popup_image-expanded">
       <div class="image-expanded">
-        <div class="image-expanded__conatainer">
+        <div class="image-expanded__container">
           <img src="#" alt="#" class="image-expanded__image" />
           <h2 class="image-expanded__title"></h2>
-        </div>
-        <button
+          <button
           class="popup__close-btn popup__close-btn-image-expanded"
           type="button"
         ></button>
+        </div>
+        
       </div>
     </div>
 
@@ -149,6 +154,8 @@
         ></button>
       </li>
     </template>
+    <script src="./app/initialCards.js"></script>
     <script src="./app/script.js"></script>
+   
   </body>
 </html>
