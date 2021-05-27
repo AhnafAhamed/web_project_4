@@ -1,161 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Around the US</title>
-    <link rel="stylesheet" href="page/index.css" />
-  </head>
 
-  <body class="body">
-    <header class="header">
-      <img
-        class="header__logo"
-        src="./images/logo.svg"
-        alt="Around the US Logo"
-      />
-    </header>
-    <div class="homepage">
-      <main class="main">
-        <section class="profile">
-          <img
-            src="./images/jacq.jpg"
-            alt="Image of Jacques Cousteau"
-            class="profile__image"
-          />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Around the US</title>
+  <link rel="stylesheet" href="page/index.css" />
+</head>
 
-          <div class="profile__info">
-            <h1 class="profile__title">Jacques Cousteau</h1>
-            <button
-              type="button"
-              class="profile__edit-button"
-              aria-label="Edit Button"
-            ></button>
-            <p class="profile__tag">Explorer</p>
-          </div>
-          <button
-            type="button"
-            class="profile__plus-button"
-            aria-label="Plus Button"
-          ></button>
-        </section>
-        <section>
-          <ul class="elements"></ul>
-        </section>
-      </main>
+<body class="body">
+  <header class="header">
+    <img class="header__logo" src="./images/logo.svg" alt="Around the US Logo" />
+  </header>
+  <div class="homepage">
+    <main class="main">
+      <section class="profile">
+        <img src="./images/jacq.jpg" alt="Image of Jacques Cousteau" class="profile__image" />
 
-      <footer class="footer">
-        <p class="footer__text">© 2020 Around The U.S.</p>
-      </footer>
-      <!-- Popup Profile  -->
-      <div class="popup popup_profile">
-        <div class="popup__container">
-          <h3 class="popup__title">Edit Profile</h3>
-          <form
-            method="POST"
-            class="popup__form popup__form_profile"
-            name="profileData"
-          >
-            <input
-              name="profile-name"
-              type="text"
-              class="popup__input popup__input_value_name"
-              placeholder="Name"
-              value=""
-              required
-            />
-            <input
-              name="profile-tag"
-              type="text"
-              class="popup__input popup__input_value_about"
-              placeholder="About Me"
-              value=""
-              required
-            />
-            <button type="submit" class="popup__btn" aria-label="Save Button">
-              Save
-            </button>
-          </form>
-          <button
-            type="button"
-            class="popup__close-btn popup__close-btn-profile"
-            aria-label="Close Button"
-          ></button>
+        <div class="profile__info">
+          <h1 class="profile__title">Jacques Cousteau</h1>
+          <button type="button" class="profile__edit-button" aria-label="Edit Button"></button>
+          <p class="profile__tag">Explorer</p>
         </div>
-      </div>
-      <!-- Popup card  -->
-      <div class="popup popup_card">
-        <div class="popup__container">
-          <h3 class="popup__title">New Place</h3>
-          <form
-            method="POST"
-            class="popup__form popup__form_card"
-            name="newPlace"
-          >
-            <input
-              name="place-title"
-              type="text"
-              class="popup__input popup__input_place_name"
-              placeholder="Name"
-              value=""
-              required
-            />
-            <input
-              name="image-url"
-              type="url"
-              class="popup__input popup__input_place_image-url"
-              placeholder="Image URL"
-              value=""
-              required
-            />
-            <button type="submit" class="popup__btn" aria-label="Save Button">
-              Save
-            </button>
-          </form>
-          <button
-            type="button"
-            class="popup__close-btn popup__close-btn-card"
-            aria-label="Close Button"
-          ></button>
-        </div>
+        <button type="button" class="profile__plus-button" aria-label="Plus Button"></button>
+      </section>
+      <section>
+        <ul class="elements"></ul>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__text">© 2020 Around The U.S.</p>
+    </footer>
+
+    <div class="popup popup_profile">
+      <div class="popup__container">
+        <h3 class="popup__title">Edit Profile</h3>
+        <form method="POST" class="popup__form popup__form_profile" name="profileData" novalidate>
+          <input name="profile-name" type="text" class="popup__input popup__input_value_name" placeholder="Name"
+            value="" minlength="2" maxlength="40" required />
+          <span id="profile-title-input-error" class="popup__input-error"></span>
+          <input name="profile-tag" type="text" class="popup__input popup__input_value_about" placeholder="About Me"
+            value="" minlength="2" maxlength="200" required />
+          <span id="profile-about-input-error" class="popup__input-error"></span>
+          <button type="submit" class="popup__btn popup__btn-profile" aria-label="Save Button">
+            Save
+          </button>
+        </form>
+        <button type="button" class="popup__close-btn popup__close-btn-profile" aria-label="Close Button"></button>
       </div>
     </div>
 
-    <div class="popup popup_image-expanded">
-      <div class="image-expanded">
-        <div class="image-expanded__container">
-          <img src="#" alt="#" class="image-expanded__image" />
-          <h2 class="image-expanded__title"></h2>
-          <button
-          class="popup__close-btn popup__close-btn-image-expanded"
-          type="button"
-        ></button>
-        </div>
-        
+    <div class="popup popup_card">
+      <div class="popup__container">
+        <h3 class="popup__title">New Place</h3>
+        <form method="POST" class="popup__form popup__form_card" name="newPlace">
+          <input name="place-title" type="text" class="popup__input popup__input_place_name" placeholder="Name" value=""
+            required />
+          <span id="card-title-input-error" class="popup__input-error"></span>
+          <input name="image-url" type="url" class="popup__input popup__input_place_image-url" placeholder="Image URL"
+            value="" minlength="2" maxlength="250" required />
+          <span id="card-link-input-error" class="popup__input-error"></span>
+          <button type="submit" class="popup__btn" aria-label="Save Button">
+            Save
+          </button>
+        </form>
+        <button type="button" class="popup__close-btn popup__close-btn-card" aria-label="Close Button"></button>
       </div>
     </div>
+  </div>
 
-    <template id="cards">
-      <li class="elements__card">
-        <img src="#" alt="#" class="elements__image" />
-        <div class="elements__info">
-          <h2 class="elements__title"></h2>
-          <button
-            type="button"
-            class="elements__heart-icon"
-            aria-label="Heart Button"
-          ></button>
-        </div>
-        <button
-          class="elements__delete-icon"
-          type="button"
-          aria-label="Delete Button"
-        ></button>
-      </li>
-    </template>
-    <script src="./app/initialCards.js"></script>
-    <script src="./app/script.js"></script>
-   
-  </body>
+  <div class="popup popup_image-expanded">
+    <div class="image-expanded">
+      <div class="image-expanded__container">
+        <img src="#" alt="#" class="image-expanded__image" />
+        <h2 class="image-expanded__title"></h2>
+        <button class="popup__close-btn popup__close-btn-image-expanded" type="button"></button>
+      </div>
+    </div>
+  </div>
+
+  <template id="cards">
+    <li class="elements__card">
+      <img src="#" alt="#" class="elements__image" />
+      <div class="elements__info">
+        <h2 class="elements__title"></h2>
+        <button type="button" class="elements__heart-icon" aria-label="Heart Button"></button>
+      </div>
+      <button class="elements__delete-icon" type="button" aria-label="Delete Button"></button>
+    </li>
+  </template>
+  <script src="./app/initialCards.js"></script>
+  <script src="./app/script.js"></script>
+  <script src="./app/validate.js"></script>
+</body>
+
 </html>

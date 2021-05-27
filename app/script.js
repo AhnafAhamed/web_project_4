@@ -1,5 +1,5 @@
 const editBtn = document.querySelector(".profile__edit-button");
-const popup = document.querySelector(".popup");
+const popup = document.querySelectorAll(".popup");
 const popupProfile = document.querySelector(".popup_profile");
 const popupCard = document.querySelector(".popup_card");
 const closeBtnProfile = document.querySelector(".popup__close-btn-profile");
@@ -7,7 +7,9 @@ const closeBtnCard = document.querySelector(".popup__close-btn-card");
 const profileTitle = document.querySelector(".profile__title");
 const profileTag = document.querySelector(".profile__tag");
 const cardTitleInput = document.querySelector(".popup__input_place_name");
-const cardImageUrlInput = document.querySelector(".popup__input_place_image-url");
+const cardImageUrlInput = document.querySelector(
+  ".popup__input_place_image-url"
+);
 const inputName = document.querySelector(".popup__input_value_name");
 const inputAbout = document.querySelector(".popup__input_value_about");
 const popupFormProfile = document.querySelector(".popup__form_profile");
@@ -18,21 +20,22 @@ const closeBtnImageExpanded = document.querySelector(
   ".popup__close-btn-image-expanded"
 );
 const elements = document.querySelector(".elements");
+const popupProfileBtn = document.querySelector(".popup__btn-profile");
 
-
-function openPopup(popupElement){
+function openPopup(popupElement) { //parameter
   popupElement.classList.add("popup_open");
 }
 
-function closePopup(popupElement){
+function closePopup(popupElement) {
   popupElement.classList.remove("popup_open");
 }
 
 function addCard(titleValue, imageUrlValue) {
-  const cardsTemplate = document.querySelector("#cards").content;
+  const cardsTemplate = document.querySelector("#cards").content; //Selecting the template 
   const cardElement = cardsTemplate
     .querySelector(".elements__card")
-    .cloneNode(true);
+    .cloneNode(true); // Cloning the li element to the dom
+    
   const cardImage = cardElement.querySelector(".elements__image");
   const cardTitle = cardElement.querySelector(".elements__title");
 
@@ -43,8 +46,9 @@ function addCard(titleValue, imageUrlValue) {
   toggleLike(cardElement);
   deleteCard(cardElement);
   openImage(cardElement);
+
   return cardElement;
-}
+};
 
 initialCards.forEach((item) => {
   const cardElement = addCard(item.name, item.link);
@@ -58,10 +62,11 @@ popupFormCard.addEventListener("submit", function (evt) {
   closePopup(popupCard);
 });
 
-
 function popupProfileOpen() {
   inputName.value = profileTitle.textContent;
   inputAbout.value = profileTag.textContent;
+  popupProfileBtn.disabled = false;
+  popupProfileBtn.classList.remove("popup__btn_inactive");
   openPopup(popupProfile);
 }
 
@@ -70,8 +75,6 @@ function popupCardOpen() {
   cardImageUrlInput.value = "";
   openPopup(popupCard);
 }
-
-
 
 function popupImageExpandedClose() {
   popupImageExpanded.classList.remove("popup_open");
@@ -90,7 +93,6 @@ function submitFormProfile(event) {
   profileTag.textContent = inputAbout.value;
   closePopup(popupProfile);
   event.preventDefault();
- 
 }
 
 function toggleLike(cardElement) {
@@ -125,15 +127,11 @@ function openImage(cardElement) {
 
 editBtn.addEventListener("click", popupProfileOpen);
 
-
-
-closeBtnProfile.addEventListener("click", function(){
+closeBtnProfile.addEventListener("click", function () {
   closePopup(popupProfile);
-});        
+});
 
-
-
-closeBtnCard.addEventListener("click", function(){
+closeBtnCard.addEventListener("click", function () {
   closePopup(popupCard);
 });
 
@@ -141,8 +139,22 @@ popupFormProfile.addEventListener("submit", submitFormProfile);
 
 addBtn.addEventListener("click", popupCardOpen);
 
-
-
-closeBtnImageExpanded.addEventListener("click", function(){
+closeBtnImageExpanded.addEventListener("click", function () {
   closePopup(popupImageExpanded);
+});
+
+document.addEventListener("keydown", function (evt) {
+  if (evt.key === "Escape") {
+    closePopup(popupProfile);
+    closePopup(popupCard);
+    closePopup(popupImageExpanded);
+  }
+});
+
+
+
+popup.forEach(element => {
+  element.addEventListener("click", evt => {
+    closePopup(evt.target);
+  });
 });
