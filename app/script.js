@@ -24,10 +24,12 @@ const popupProfileBtn = document.querySelector(".popup__btn-profile");
 
 function openPopup(popupElement) { //parameter
   popupElement.classList.add("popup_open");
+  document.addEventListener('keydown', closeOnEscape);
 }
 
 function closePopup(popupElement) {
   popupElement.classList.remove("popup_open");
+  document.removeEventListener('keydown', closeOnEscape);
 }
 
 function addCard(titleValue, imageUrlValue) {
@@ -143,14 +145,11 @@ closeBtnImageExpanded.addEventListener("click", function () {
   closePopup(popupImageExpanded);
 });
 
-document.addEventListener("keydown", function (evt) {
+function closeOnEscape(evt) {
   if (evt.key === "Escape") {
-    closePopup(popupProfile);
-    closePopup(popupCard);
-    closePopup(popupImageExpanded);
+    closePopup(document.querySelector('.popup_open'));
   }
-});
-
+};
 
 
 popup.forEach(element => {
