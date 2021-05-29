@@ -79,15 +79,15 @@ function popupCardOpen() {
 }
 
 function popupImageExpandedClose() {
-  popupImageExpanded.classList.remove("popup_open");
+  closePopup(popupImageExpanded);
 }
 
 function popupCloseProfile() {
-  popupProfile.classList.remove("popup_open");
+  closePopup(popupProfile);
 }
 
 function popupCloseCard() {
-  popupCard.classList.remove("popup_open");
+  closePopup(popupCard);
 }
 
 function submitFormProfile(event) {
