@@ -22,22 +22,24 @@ const closeBtnImageExpanded = document.querySelector(
 const elements = document.querySelector(".elements");
 const popupProfileBtn = document.querySelector(".popup__btn-profile");
 
-function openPopup(popupElement) { //parameter
+//Open Popup
+function openPopup(popupElement) {
   popupElement.classList.add("popup_open");
-  document.addEventListener('keydown', closeOnEscape);
+  document.addEventListener("keydown", closeOnEscape);
 }
 
+//Close Popup
 function closePopup(popupElement) {
   popupElement.classList.remove("popup_open");
-  document.removeEventListener('keydown', closeOnEscape);
+  document.removeEventListener("keydown", closeOnEscape);
 }
 
+//Function to add  image cards to the page 
 function addCard(titleValue, imageUrlValue) {
-  const cardsTemplate = document.querySelector("#cards").content; //Selecting the template 
+  const cardsTemplate = document.querySelector("#cards").content; //Selecting the template
   const cardElement = cardsTemplate
     .querySelector(".elements__card")
     .cloneNode(true); // Cloning the li element to the dom
-    
   const cardImage = cardElement.querySelector(".elements__image");
   const cardTitle = cardElement.querySelector(".elements__title");
 
@@ -50,21 +52,23 @@ function addCard(titleValue, imageUrlValue) {
   openImage(cardElement);
 
   return cardElement;
-};
+}
 
+//Calling the addcard function
 initialCards.forEach((item) => {
-  const cardElement = addCard(item.name, item.link);
-  elements.append(cardElement);
+  elements.append(addCard(item.name, item.link));
 });
 
+//Function to add new cards via the popup form
 popupFormCard.addEventListener("submit", function (evt) {
   evt.preventDefault();
-  const cardElement = addCard(cardTitleInput.value, cardImageUrlInput.value);
-  elements.prepend(cardElement);
+  elements.prepend(addCard(cardTitleInput.value, cardImageUrlInput.value));
   closePopup(popupCard);
 });
 
-function popupProfileOpen() {
+//Function to initialize opening of the profile edit popup
+function popupProfileOpen(evt) {
+  evt.preventDefault();
   inputName.value = profileTitle.textContent;
   inputAbout.value = profileTag.textContent;
   popupProfileBtn.disabled = false;
@@ -72,31 +76,24 @@ function popupProfileOpen() {
   openPopup(popupProfile);
 }
 
+//Function to initialize opening of the card popup
 function popupCardOpen() {
   cardTitleInput.value = "";
   cardImageUrlInput.value = "";
   openPopup(popupCard);
 }
 
-function popupImageExpandedClose() {
-  closePopup(popupImageExpanded);
-}
 
-function popupCloseProfile() {
-  closePopup(popupProfile);
-}
 
-function popupCloseCard() {
-  closePopup(popupCard);
-}
-
+//Function to submit profile form data
 function submitFormProfile(event) {
+  event.preventDefault();
   profileTitle.textContent = inputName.value;
   profileTag.textContent = inputAbout.value;
   closePopup(popupProfile);
-  event.preventDefault();
 }
 
+//Function to toggle like
 function toggleLike(cardElement) {
   const likeBtn = cardElement.querySelector(".elements__heart-icon");
 
@@ -105,6 +102,7 @@ function toggleLike(cardElement) {
   });
 }
 
+//Function to delete card
 function deleteCard(cardElement) {
   const deleteBtn = cardElement.querySelector(".elements__delete-icon");
 
@@ -113,6 +111,7 @@ function deleteCard(cardElement) {
   });
 }
 
+//Function to expand an image card
 function openImage(cardElement) {
   const elementCardImage = cardElement.querySelector(".elements__image");
   const elementCardTitle = cardElement.querySelector(".elements__title");
@@ -126,6 +125,20 @@ function openImage(cardElement) {
     openPopup(popupImageExpanded);
   });
 }
+
+//Function to  close popup on escape key
+function closeOnEscape(evt) {
+  if (evt.key === "Escape") {
+    closePopup(document.querySelector(".popup_open"));
+  }
+}
+
+//Function to close popup on clicking overlay
+popup.forEach((element) => {
+  element.addEventListener("click", (evt) => {
+    closePopup(evt.target);
+  });
+});
 
 editBtn.addEventListener("click", popupProfileOpen);
 
@@ -145,15 +158,15 @@ closeBtnImageExpanded.addEventListener("click", function () {
   closePopup(popupImageExpanded);
 });
 
-function closeOnEscape(evt) {
-  if (evt.key === "Escape") {
-    closePopup(document.querySelector('.popup_open'));
-  }
-};
+function popupImageExpandedClose() {
+  closePopup(popupImageExpanded);
+}
 
+function popupCloseProfile() {
+  closePopup(popupProfile);
+}
 
-popup.forEach(element => {
-  element.addEventListener("click", evt => {
-    closePopup(evt.target);
-  });
-});
+function popupCloseCard() {
+  closePopup(popupCard);
+}
+

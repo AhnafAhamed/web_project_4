@@ -38,10 +38,10 @@
       <div class="popup__container">
         <h3 class="popup__title">Edit Profile</h3>
         <form method="POST" class="popup__form popup__form_profile" name="profileData" novalidate>
-          <input name="profile-name" type="text" class="popup__input popup__input_value_name" placeholder="Name"
+          <input id="profile-title-input" name="profile-name" type="text" class="popup__input popup__input_value_name" placeholder="Name"
             value="" minlength="2" maxlength="40" required />
           <span id="profile-title-input-error" class="popup__input-error"></span>
-          <input name="profile-tag" type="text" class="popup__input popup__input_value_about" placeholder="About Me"
+          <input id="profile-about-input" name="profile-tag" type="text" class="popup__input popup__input_value_about" placeholder="About Me"
             value="" minlength="2" maxlength="200" required />
           <span id="profile-about-input-error" class="popup__input-error"></span>
           <button type="submit" class="popup__btn popup__btn-profile" aria-label="Save Button">
@@ -56,10 +56,10 @@
       <div class="popup__container">
         <h3 class="popup__title">New Place</h3>
         <form method="POST" class="popup__form popup__form_card" name="newPlace">
-          <input name="place-title" type="text" class="popup__input popup__input_place_name" placeholder="Name" value=""
-            required />
+          <input id="card-title-input" name="place-title" type="text" class="popup__input popup__input_place_name" placeholder="Name" value=""
+          minlength="2" maxlength="250" required />
           <span id="card-title-input-error" class="popup__input-error"></span>
-          <input name="image-url" type="url" class="popup__input popup__input_place_image-url" placeholder="Image URL"
+          <input id="card-link-input" name="image-url" type="url" class="popup__input popup__input_place_image-url" placeholder="Image URL"
             value="" minlength="2" maxlength="250" required />
           <span id="card-link-input-error" class="popup__input-error"></span>
           <button type="submit" class="popup__btn" aria-label="Save Button">
@@ -91,9 +91,21 @@
       <button class="elements__delete-icon" type="button" aria-label="Delete Button"></button>
     </li>
   </template>
+
+  <template id="test">
+    <li class="elements__card">
+      <img src="#" alt="#" class="elements__images" />
+      <div class="elements__info">
+        <h2 class="elements__title"></h2>
+        <button type="button" class="elements__heart-icon" aria-label="Heart Button"></button>
+      </div>
+      <button class="elements__delete-icon" type="button" aria-label="Delete Button"></button>
+    </li>
+  </template>
   <script src="./app/initialCards.js"></script>
   <script src="./app/script.js"></script>
   <script src="./app/validate.js"></script>
+  
 </body>
 
 </html>
