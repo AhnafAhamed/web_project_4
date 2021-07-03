@@ -2,9 +2,9 @@
 
 Around The U.S is a fictional project, which gives users the ability to 
 
-*Add their favorite images 
-*Like Images
-*Edit images and their bio
+* Add their favorite images 
+* Like Images
+* Edit images and their bio
 
 More features will be added as per project requirements.
 
