@@ -7,6 +7,7 @@ const settings = {
     errorClass: "popup__input-error_visible"
 };
 
+// function to show the input error message
 const showInputError = (formElement, inputElement, errorMessage) => {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.add(settings.inputErrorClass);
@@ -14,6 +15,7 @@ const showInputError = (formElement, inputElement, errorMessage) => {
     errorElement.classList.add(settings.errorClass);
 };
 
+// function to hide the input error
 const hideInputError = (formElement, inputElement) => {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.remove(settings.inputErrorClass);
@@ -21,6 +23,7 @@ const hideInputError = (formElement, inputElement) => {
     errorElement.textContent = "";
 };
 
+// function to check the validity of the input value
 const isValid = (formElement, inputElement) => {
     if (!inputElement.validity.valid) {
         showInputError(formElement, inputElement, inputElement.validationMessage);
@@ -29,6 +32,7 @@ const isValid = (formElement, inputElement) => {
     }
 };
 
+// function to 
 const hasInvalidInput = (inputList) => {
     return inputList.some((inputElement) => {
         return !inputElement.validity.valid;
@@ -59,6 +63,7 @@ const setEventListeners = (formElement) => {
     });
 };
 
+// main function which enables the form validation
 const enableValidation = () => {
     const formList = Array.from(document.querySelectorAll(settings.formSelector));
     formList.forEach((formElement) => {
@@ -73,5 +78,7 @@ const enableValidation = () => {
 };
 
 
-
+// calling the main function
 enableValidation(settings);
+
+    
