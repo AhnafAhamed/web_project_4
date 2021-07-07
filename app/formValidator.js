@@ -57,6 +57,7 @@ class FormValidator {
     const inputList = Array.from(
       formElement.querySelectorAll(this._inputSelector)
     );
+    // console.log(formElement)
     const buttonElement = formElement.querySelector(this._submitButtonSelector);
 
     this._toggleButtonState(inputList, buttonElement);
@@ -66,6 +67,20 @@ class FormValidator {
         this._isValid(formElement, inputElement);
         this._toggleButtonState(inputList, buttonElement);
       });
+    });
+  }
+
+  resetValidation() {
+    const inputList = Array.from(
+      this._formElement.querySelectorAll(this._inputSelector)
+    );
+    console.log(inputList)
+    const buttonElement = this._formElement.querySelector(this._submitButtonSelector);
+    
+    this._toggleButtonState(inputList, buttonElement); 
+
+    inputList.forEach((inputElement) => {
+      this._hideInputError(this._formElement, inputElement)
     });
   }
 

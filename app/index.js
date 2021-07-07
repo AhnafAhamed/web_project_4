@@ -19,6 +19,8 @@ const closeBtnCard = document.querySelector(".popup__close-btn-card");
 const closeBtnImageExpanded = document.querySelector(".popup__close-btn-image-expanded");
 const addBtn = document.querySelector(".profile__plus-button");
 const cardTitleInput = document.querySelector(".popup__input_place_name");
+const expandedImage = document.querySelector(".image-expanded__image");
+const expandedImageTitle = document.querySelector(".image-expanded__title");
 const cardImageUrlInput = document.querySelector(
   ".popup__input_place_image-url"
 );
@@ -46,19 +48,20 @@ function closePopup(popupElement) {
 function popupProfileOpen() {
   inputName.value = profileTitle.textContent;
   inputAbout.value = profileTag.textContent;
+  validateFormProfile.resetValidation();
   openPopup(popupProfile);
 }
 
 function popupCardOpen() {
   cardTitleInput.value = "";
   cardImageUrlInput.value = "";
+  validateFormCard.resetValidation();
   openPopup(popupCard);
 }
 
 function expandImage(url, text) {
-  popupImageExpanded.classList.add("popup_open");
-  document.querySelector(".image-expanded__image").src = url;
-  document.querySelector(".image-expanded__title").textContent = text;
+  expandedImage.src = url;
+  expandedImageTitle.textContent = text;
   openPopup(popupImageExpanded);
 }
 
