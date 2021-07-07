@@ -1,3 +1,5 @@
+import { expandImage } from "./index.js"
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -48,23 +50,7 @@ class Card {
     })
 
     this._element.querySelector(".elements__image").addEventListener("click", () => {
-      this._expandImage();
-    })
-
-    document.querySelector(".popup__close-btn-image-expanded").addEventListener("click", () => {
-      this._closeExpandedImage();
-    })
-
-    document.addEventListener("keydown", (evt) => {
-      if (evt.key === "Escape") {
-        this._closeExpandedImage();
-      }
-    })
-
-    document.querySelector(".popup_image-expanded").addEventListener("click", (evt) => {
-      if (evt.target.classList.contains("popup_image-expanded")) {
-        this._closeExpandedImage();
-      }
+      expandImage(this._url, this._text);
     })
     
   }
@@ -77,22 +63,13 @@ class Card {
     this._element.remove();
   }
 
-  _expandImage() {
-    document.querySelector(".popup_image-expanded").classList.add("popup_open");
-    document.querySelector(".image-expanded__image").src = this._url;
-    document.querySelector(".image-expanded__title").textContent = this._text;
-  }
-
-  _closeExpandedImage() {
-    document.querySelector(".popup_image-expanded").classList.remove("popup_open");
-  }
-
   generateCard() {
     this._getTemplate();
     this._setEventListeners();
 
     this._element.querySelector(".elements__title").textContent = this._text;
     this._element.querySelector(".elements__image").src = this._url;
+    this._element.querySelector(".elements__image").alt = this._text;
 
     return this._element;
   }
