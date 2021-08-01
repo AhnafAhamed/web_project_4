@@ -6,17 +6,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Around the US</title>
-  <link rel="stylesheet" href="page/index.css" />
 </head>
 
 <body class="body">
   <header class="header">
-    <img class="header__logo" src="./images/logo.svg" alt="Around the US Logo" />
+    <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="Around the US Logo" />
   </header>
   <div class="homepage">
     <main class="main">
       <section class="profile">
-        <img src="./images/jacq.jpg" alt="Image of Jacques Cousteau" class="profile__image" />
+        <img src="<%=require('./images/jacq.jpg')%>" alt="Image of Jacques Cousteau" class="profile__image" />
 
         <div class="profile__info">
           <h1 class="profile__title">Jacques Cousteau</h1>
@@ -38,10 +37,10 @@
       <div class="popup__container">
         <h3 class="popup__title">Edit Profile</h3>
         <form method="POST" class="popup__form popup__form_profile" name="profileData" novalidate>
-          <input id="profile-title-input" name="profile-name" type="text" class="popup__input popup__input_value_name" placeholder="Name"
+          <input id="profile-title-input" name="name" type="text" class="popup__input popup__input_value_name" placeholder="Name"
             value="" minlength="2" maxlength="40" required />
           <span id="profile-title-input-error" class="popup__input-error"></span>
-          <input id="profile-about-input" name="profile-tag" type="text" class="popup__input popup__input_value_about" placeholder="About Me"
+          <input id="profile-about-input" name="title" type="text" class="popup__input popup__input_value_about" placeholder="About Me"
             value="" minlength="2" maxlength="200" required />
           <span id="profile-about-input-error" class="popup__input-error"></span>
           <button type="submit" class="popup__btn popup__btn-profile" aria-label="Save Button">
@@ -56,10 +55,10 @@
       <div class="popup__container">
         <h3 class="popup__title">New Place</h3>
         <form method="POST" class="popup__form popup__form_card" name="newPlace">
-          <input id="card-title-input" name="place-title" type="text" class="popup__input popup__input_place_name" placeholder="Name" value=""
+          <input id="card-title-input" name="name" type="text" class="popup__input popup__input_place_name" placeholder="Name" value=""
           minlength="2" maxlength="250" required />
           <span id="card-title-input-error" class="popup__input-error"></span>
-          <input id="card-link-input" name="image-url" type="url" class="popup__input popup__input_place_image-url" placeholder="Image URL"
+          <input id="card-link-input" name="link" type="url" class="popup__input popup__input_place_image-url" placeholder="Image URL"
             value="" minlength="2" maxlength="250" required />
           <span id="card-link-input-error" class="popup__input-error"></span>
           <button type="submit" class="popup__btn" aria-label="Save Button">
@@ -92,10 +91,6 @@
     </li>
   </template>
 
-
-  <script type="module" src="./app/card.js"></script>
-  <script type="module" src="./app/formValidator.js"></script>
-  <script type="module" src="./app/index.js"></script>
 </body>
 
 </html>
