@@ -15,8 +15,7 @@
   <div class="homepage">
     <main class="main">
       <section class="profile">
-        <img src="<%=require('./images/jacq.jpg')%>" alt="Image of Jacques Cousteau" class="profile__image" />
-
+        <div class="profile__picture"><img src="<%=require('./images/jacq.jpg')%>" alt="Image of Jacques Cousteau" class="profile__image" /></div>
         <div class="profile__info">
           <h1 class="profile__title">Jacques Cousteau</h1>
           <button type="button" class="profile__edit-button" aria-label="Edit Button"></button>
@@ -43,11 +42,11 @@
           <input id="profile-about-input" name="title" type="text" class="popup__input popup__input_value_about" placeholder="About Me"
             value="" minlength="2" maxlength="200" required />
           <span id="profile-about-input-error" class="popup__input-error"></span>
-          <button type="submit" class="popup__btn popup__btn-profile" aria-label="Save Button">
+          <button type="submit" class="popup__btn" aria-label="Save Button">
             Save
           </button>
         </form>
-        <button type="button" class="popup__close-btn popup__close-btn-profile" aria-label="Close Button"></button>
+        <button type="button" class="popup__close-btn" aria-label="Close Button"></button>
       </div>
     </div>
 
@@ -65,8 +64,29 @@
             Save
           </button>
         </form>
-        <button type="button" class="popup__close-btn popup__close-btn-card" aria-label="Close Button"></button>
+        <button type="button" class="popup__close-btn" aria-label="Close Button"></button>
       </div>
+    </div>
+  </div>
+  <div class="popup popup_confirmation-delete">
+    <div class="popup__container">
+      <h3 class="popup__title popup__title_confirmation-delete">Are you sure?</h3>
+      <form action="POST" name="deleteConfirmation">
+        <button class="popup__btn popup__btn_confirmation-delete">Yes</button>
+      </form>
+      <button type="button" class="popup__close-btn" aria-label="Close Button"></button>
+    </div>
+  </div>
+
+  <div class="popup popup_profile-image-edit">
+    <div class="popup__container">
+      <form action="POST" name="editProfilePicture">
+        <h3 class="popup__title popup__title_profile-image-edit">Change profile picture</h3>
+        <input id="image-link-input" name="link" type="url" class="popup__input popup__input_profile_link" placeholder="Name" value=""
+          minlength="2" maxlength="250" required />
+        <button class="popup__btn popup__btn_profile-image-edit">Save</button>
+        <button type="button" class="popup__close-btn" aria-label="Close Button"></button>
+      </form>
     </div>
   </div>
 
@@ -75,7 +95,7 @@
       <div class="image-expanded__container">
         <img src="#" alt="#" class="image-expanded__image" />
         <h2 class="image-expanded__title"></h2>
-        <button class="popup__close-btn popup__close-btn-image-expanded" type="button"></button>
+        <button class="popup__close-btn" type="button"></button>
       </div>
     </div>
   </div>
@@ -85,7 +105,10 @@
       <img src="#" alt="#" class="elements__image" />
       <div class="elements__info">
         <h2 class="elements__title"></h2>
-        <button type="button" class="elements__heart-icon" aria-label="Heart Button"></button>
+        <div class="elements__likes">
+          <button type="button" class="elements__heart-icon" aria-label="Heart Button"></button>
+          <span class="elements__like-counter">1</span>
+        </div>
       </div>
       <button class="elements__delete-icon" type="button" aria-label="Delete Button"></button>
     </li>
