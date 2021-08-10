@@ -1,8 +1,9 @@
 export default class Card {
-    constructor({ data, handleCardClick }, cardSelector) {
+    constructor({ data, handleCardClick, handleDeleteClick }, cardSelector) {
         this._text = data.name;
         this._link = data.link;
         this._handleCardClick = handleCardClick;
+        this._handleDeleteClick = handleDeleteClick;
 
         this._cardSelector = cardSelector;
     }
@@ -19,7 +20,7 @@ export default class Card {
         })
     
         this._element.querySelector(".elements__delete-icon").addEventListener("click", () => {
-          this._deleteCard();
+          this._handleDeleteClick();
         })
     
         this._element.querySelector(".elements__image").addEventListener("click", () => {
@@ -32,7 +33,7 @@ export default class Card {
         this._element.querySelector(".elements__heart-icon").classList.toggle("elements__heart-icon_liked");
     }
     
-    _deleteCard() {
+    deleteCard() {
         this._element.remove();
     }
     

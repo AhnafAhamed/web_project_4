@@ -15,7 +15,9 @@
   <div class="homepage">
     <main class="main">
       <section class="profile">
-        <div class="profile__picture"><img src="<%=require('./images/jacq.jpg')%>" alt="Image of Jacques Cousteau" class="profile__image" /></div>
+        <div class="profile__picture">
+          <img src="<%=require('./images/jacq.jpg')%>" alt="Image of Jacques Cousteau" class="profile__image" />
+        </div>
         <div class="profile__info">
           <h1 class="profile__title">Jacques Cousteau</h1>
           <button type="button" class="profile__edit-button" aria-label="Edit Button"></button>
@@ -71,7 +73,7 @@
   <div class="popup popup_confirmation-delete">
     <div class="popup__container">
       <h3 class="popup__title popup__title_confirmation-delete">Are you sure?</h3>
-      <form action="POST" name="deleteConfirmation">
+      <form action="POST" class="popup__form" name="deleteConfirmation">
         <button class="popup__btn popup__btn_confirmation-delete">Yes</button>
       </form>
       <button type="button" class="popup__close-btn" aria-label="Close Button"></button>
@@ -80,10 +82,11 @@
 
   <div class="popup popup_profile-image-edit">
     <div class="popup__container">
-      <form action="POST" name="editProfilePicture">
+      <form action="POST" class="popup__form popup__form-profile-image" name="editProfilePicture">
         <h3 class="popup__title popup__title_profile-image-edit">Change profile picture</h3>
-        <input id="image-link-input" name="link" type="url" class="popup__input popup__input_profile_link" placeholder="Name" value=""
+        <input id="image-link-input" name="link" type="url" class="popup__input popup__input_profile_link" placeholder="url" value=""
           minlength="2" maxlength="250" required />
+          <span id="image-link-input-error" class="popup__input-error popup__input-error_profile-image"></span>
         <button class="popup__btn popup__btn_profile-image-edit">Save</button>
         <button type="button" class="popup__close-btn" aria-label="Close Button"></button>
       </form>
