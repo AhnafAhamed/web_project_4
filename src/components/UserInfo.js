@@ -1,5 +1,5 @@
 export default class UserInfo {
-    constructor({ nameElement, titleElement  }) {
+    constructor({ nameElement, titleElement }) {
         this._nameElement = nameElement;
         this._titleElement = titleElement;
     }
@@ -14,6 +14,6 @@ export default class UserInfo {
 
     setUserInfo(data) {
         this._nameElement.textContent = data.name;
-        this._titleElement.textContent = data.title;
+        this._titleElement.textContent = data.about;
     }
 }

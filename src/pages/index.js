@@ -7,6 +7,7 @@ import UserInfo from "../components/UserInfo.js";
 import UserAvatar from "../components/UserAvatar.js";
 import Section from "../components/Section.js";
 import PopupDeleteCard from "../components/PopupDeleteCard.js";
+import Api from "../components/Api.js";
 import {
   cardAddBtn,
   popupFormCard,
@@ -18,7 +19,6 @@ import {
   popupProfile,
   cardTemplate,
   popupImageExpanded,
-  initialCards,
   cardsContainer,
   profileName,
   profileTitle,
@@ -31,7 +31,9 @@ import {
   popupDeleteConfirmationCard
 } from "../utils/constants.js";
 
+/*----------------------- Initializing Api Class --------------------*/
 
+const api = new Api();
 
 /*----------------------- Adding and Updating Cards --------------------*/
 
@@ -43,12 +45,15 @@ const createCard = (data) => {
       handleCardClick: () => {
         popupImage.open(data);
       },
-      handleDeleteClick: () => {
-        popupDelete.open();
+      handleDeleteClick: (evt) => {
+        popupDelete.open(evt, data._id);
         popupDelete.submitForm(() => {
           cardInstance.deleteCard();
         })
-        
+      },
+      userData: data._id,
+      handleCardLike: status => {
+        return status ? api.likeCard(data._id) : api.removeCardLike(data._id);
       }
     },
     cardTemplate
@@ -67,7 +72,9 @@ const cardList = new Section(
   cardsContainer
 );
 
-cardList.renderItems(initialCards);
+api.renderCard().then((data) => {
+  cardList.renderItems(data);
+})
 
 // enabling image popup
 const popupImage = new PopupWithImage(popupImageExpanded);
@@ -83,8 +90,7 @@ popupDelete.setEventListeners();
 const imageCardFormPopup = new PopupWithForm({
   popupSelector: popupCard,
   formSubmitHandler: (data) => {
-    const newCard = createCard(data);
-    cardList.addItem(newCard.generateCard());
+    api.sendCard(data);
   },
 });
 
@@ -109,10 +115,14 @@ const user = new UserInfo({
   titleElement: profileTitle,
 });
 
+api.renderUserInfo().then((data) => {
+  user.setUserInfo(data);
+})
+
 const userInfoPopupForm = new PopupWithForm({
   popupSelector: popupProfile,
   formSubmitHandler: (data) => {
-    user.setUserInfo(data);
+    api.sendUserInfo(data);
   },
 });
 userInfoPopupForm.setEventListeners();
@@ -129,9 +139,6 @@ profileEditBtn.addEventListener("click", () => {
   userInfoPopupForm.open();
 });
 
-
-
-
 /*----------------------- Avatar Update--------------------*/
 
 const avatar = new UserAvatar({
@@ -141,7 +148,7 @@ const avatar = new UserAvatar({
 const avatarUpdateForm = new PopupWithForm({
   popupSelector: avatarImage,
   formSubmitHandler: (data) => {
-    avatar.setUserAvatar(data);
+    api.sendAvatar(data);
   }
 })
 
@@ -149,8 +156,12 @@ const avatarFormValidator = new FormValidator(formSettings, popupAvatarForm);
 avatarFormValidator.enableValidation();
 avatarEditBtn.addEventListener("click", () => {
   const getAvatar = avatar.getUserAvatar();
-  avatarUrlInput.value = getAvatar.link;
+  avatarUrlInput.value = getAvatar.avatar;
   avatarUpdateForm.open();
 })
 
 avatarUpdateForm.setEventListeners();
+
+api.renderAvatar().then((data) => {
+  avatar.setUserAvatar(data);
+})

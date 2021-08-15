@@ -5,12 +5,12 @@ export default class UserAvatar{
 
     getUserAvatar() {
         this.userData = {
-            link: this._avatarElement.src
+            avatar: this._avatarElement.src
         };
         return this.userData;
     }
 
     setUserAvatar(data) {
-        this._avatarElement.src = data.link;
+        this._avatarElement.src = data.avatar;
     }
 }

@@ -16,12 +16,12 @@
     <main class="main">
       <section class="profile">
         <div class="profile__picture">
-          <img src="<%=require('./images/jacq.jpg')%>" alt="Image of Jacques Cousteau" class="profile__image" />
+          <img src="" alt="Image of Jacques Cousteau" class="profile__image" />
         </div>
         <div class="profile__info">
-          <h1 class="profile__title">Jacques Cousteau</h1>
+          <h1 class="profile__title"> </h1>
           <button type="button" class="profile__edit-button" aria-label="Edit Button"></button>
-          <p class="profile__tag">Explorer</p>
+          <p class="profile__tag"> </p>
         </div>
         <button type="button" class="profile__plus-button" aria-label="Plus Button"></button>
       </section>
@@ -41,7 +41,7 @@
           <input id="profile-title-input" name="name" type="text" class="popup__input popup__input_value_name" placeholder="Name"
             value="" minlength="2" maxlength="40" required />
           <span id="profile-title-input-error" class="popup__input-error"></span>
-          <input id="profile-about-input" name="title" type="text" class="popup__input popup__input_value_about" placeholder="About Me"
+          <input id="profile-about-input" name="about" type="text" class="popup__input popup__input_value_about" placeholder="About Me"
             value="" minlength="2" maxlength="200" required />
           <span id="profile-about-input-error" class="popup__input-error"></span>
           <button type="submit" class="popup__btn" aria-label="Save Button">
@@ -84,7 +84,7 @@
     <div class="popup__container">
       <form action="POST" class="popup__form popup__form-profile-image" name="editProfilePicture">
         <h3 class="popup__title popup__title_profile-image-edit">Change profile picture</h3>
-        <input id="image-link-input" name="link" type="url" class="popup__input popup__input_profile_link" placeholder="url" value=""
+        <input id="image-link-input" name="avatar" type="url" class="popup__input popup__input_profile_link" placeholder="url" value=""
           minlength="2" maxlength="250" required />
           <span id="image-link-input-error" class="popup__input-error popup__input-error_profile-image"></span>
         <button class="popup__btn popup__btn_profile-image-edit">Save</button>
