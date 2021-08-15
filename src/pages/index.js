@@ -51,7 +51,10 @@ const createCard = (data) => {
           cardInstance.deleteCard();
         })
       },
-      userData: data._id,
+      userData: api.renderUserInfo().then((data) => {
+        console.log(data)
+        return data.json;
+      }),
       handleCardLike: status => {
         return status ? api.likeCard(data._id) : api.removeCardLike(data._id);
       }
