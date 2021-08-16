@@ -13,7 +13,6 @@ export default class Api {
             method: 'GET'
         })
         .then((res) => {
-            console.log(res)
             return res.json();
         })
         .catch((err) => {

@@ -47,14 +47,11 @@ const createCard = (data) => {
       },
       handleDeleteClick: (evt) => {
         popupDelete.open(evt, data._id);
-        popupDelete.submitForm(() => {
-          cardInstance.deleteCard();
-        })
       },
-      userData: api.renderUserInfo().then((data) => {
-        console.log(data)
-        return data.json;
-      }),
+      userData: "ff7f8240f3b1cc171b16d984",
+      // api.renderUserInfo().then((data) => {
+      //    return data; reuturn data doesn't work please suggest a way to do that
+      // }),
       handleCardLike: status => {
         return status ? api.likeCard(data._id) : api.removeCardLike(data._id);
       }
@@ -85,7 +82,13 @@ popupImage.setEventListeners();
 
 // enabling delete popup
 const popupDelete = new PopupDeleteCard({
-  popupSelector:popupDeleteConfirmationCard
+  popupSelector:popupDeleteConfirmationCard,
+  formSubmitHandler: (cardElement, cardId) => {
+    api.deleteCard(cardId).then(() => {
+      cardElement.remove();
+      popupDelete.close();
+    })
+  }
 });
 popupDelete.setEventListeners();
 
