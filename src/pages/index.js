@@ -50,7 +50,7 @@ const createCard = (data) => {
       },
       userData: "ff7f8240f3b1cc171b16d984",
       // api.renderUserInfo().then((data) => {
-      //    return data; reuturn data doesn't work please suggest a way to do that
+      //    return data; "return data" doesn't work please suggest a way to do that
       // }),
       handleCardLike: status => {
         return status ? api.likeCard(data._id) : api.removeCardLike(data._id);
@@ -96,7 +96,13 @@ popupDelete.setEventListeners();
 const imageCardFormPopup = new PopupWithForm({
   popupSelector: popupCard,
   formSubmitHandler: (data) => {
-    api.sendCard(data);
+    api.sendCard(data)
+    .then( cardData => {
+      const newCard = createCard(cardData);
+      cardList.addItem(newCard.generateCard());
+    }).then(() => {
+      imageCardFormPopup.close();
+    })
   },
 });
 
@@ -128,7 +134,11 @@ api.renderUserInfo().then((data) => {
 const userInfoPopupForm = new PopupWithForm({
   popupSelector: popupProfile,
   formSubmitHandler: (data) => {
-    api.sendUserInfo(data);
+    api.sendUserInfo(data)
+    .then(() => {
+      user.setUserInfo(data);
+      userInfoPopupForm.close();
+    });
   },
 });
 userInfoPopupForm.setEventListeners();
@@ -154,7 +164,11 @@ const avatar = new UserAvatar({
 const avatarUpdateForm = new PopupWithForm({
   popupSelector: avatarImage,
   formSubmitHandler: (data) => {
-    api.sendAvatar(data);
+    api.sendAvatar(data)
+    .then((data) => {
+      avatar.setUserAvatar(data);
+      avatarUpdateForm.close(data);
+    })
   }
 })
 

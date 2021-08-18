@@ -79,13 +79,13 @@ export default class Api {
         })
     }
 
-    sendCard(newCard) {
+    sendCard({name, link}) {
         return fetch(this._baseUrl + '/cards', {
             headers: this._headers,
             method: 'POST',
             body: JSON.stringify({
-                name: newCard.name,
-                link: newCard.link
+                name,
+                link
             })
         })
         .then((res) => {
