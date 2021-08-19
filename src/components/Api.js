@@ -1,125 +1,81 @@
 export default class Api {
-    constructor() {
-        this._baseUrl = "https://around.nomoreparties.co/v1/group-13",
-        this._headers = {
-            authorization: "4bb4f649-ce49-4e5f-81c2-ac119aac9e7d",
-            "Content-type": "application/json; charset=UTF-8"
+    constructor(params) {
+        this.baseUrl = params.baseUrl,
+        this.headers = params.headers
+    }
+
+    _checkResponse(res) {
+        if (res.ok) {
+            return res.json();
         }
+        return Promise.reject("Error")
     }
 
     renderUserInfo() {
-        return fetch(this._baseUrl + '/users/me', {
-            headers: this._headers,
+        return fetch(this.baseUrl + '/users/me', {
+            headers: this.headers,
             method: 'GET'
         })
-        .then((res) => {
-            return res.json();
-        })
-        .catch((err) => {
-            console.log(`Error ${err}`)
-        })
-    }
-
-    renderAvatar() {
-        return fetch(this._baseUrl + '/users/me', {
-            headers: this._headers,
-            method: 'GET'
-        })
-        .then((res) => {
-            return res.json();
-        })
-        .catch((err) => {
-            console.log(`Error ${err}`)
-        })
+        .then((res) => this._checkResponse(res));
     }
 
     renderCard() {
-        return fetch(this._baseUrl + '/cards', {
-            headers: this._headers,
+        return fetch(this.baseUrl + '/cards', {
+            headers: this.headers,
             method: 'GET'
         })
-        .then((res) => {
-            return res.json();
-        })
-        .catch((err) => {
-            console.log(`Error ${err}`)
-        })
+        .then((res) => this._checkResponse(res));
     }
 
     sendUserInfo(newUserInfo) {
-        return fetch(this._baseUrl + '/users/me', {
-            headers: this._headers,
+        return fetch(this.baseUrl + '/users/me', {
+            headers: this.headers,
             method: 'PATCH',
             body: JSON.stringify({
                 name: newUserInfo.name,
                 about: newUserInfo.about
             })
         })
-        .then((res) => {
-            return res.json();
-        })
-        .catch((err) => {
-            console.log(`Error ${err}`);
-        })
+        .then((res) => this._checkResponse(res));
     }
 
     sendAvatar(newAvatar) {
-        return fetch(this._baseUrl + '/users/me/avatar', {
-            headers: this._headers,
+        return fetch(this.baseUrl + '/users/me/avatar', {
+            headers: this.headers,
             method: 'PATCH',
             body: JSON.stringify({
                 avatar: newAvatar.avatar
             })
         })
-        .then((res) => {
-            return res.json();
-        })
-        .catch((err) => {
-             console.log(`Error ${err}`)
-        })
+        .then((res) => this._checkResponse(res));
     }
 
     sendCard({name, link}) {
-        return fetch(this._baseUrl + '/cards', {
-            headers: this._headers,
+        return fetch(this.baseUrl + '/cards', {
+            headers: this.headers,
             method: 'POST',
             body: JSON.stringify({
                 name,
                 link
             })
         })
-        .then((res) => {
-            return res.json();
-        })
-        .catch((err) => {
-            console.log(`Error ${err}`);
-        })
+        .then((res) => this._checkResponse(res));
     }
 
     likeCard(cardId) {
-        return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
-            headers: this._headers,
+        return fetch(`${this.baseUrl}/cards/likes/${cardId}`, {
+            headers: this.headers,
             method: 'PUT'
         })
-        .then((res) => {
-            return res.json();
-        })
-        .catch((err) => {
-            console.log(`Error ${err}`);
-        })
+        .then((res) => this._checkResponse(res));
     }
 
     removeCardLike(cardId) {
-        return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
-            headers: this._headers,
+        return fetch(`${this.baseUrl}/cards/likes/${cardId}`, {
+            headers: this.headers,
             method: 'DELETE'
         })
-        .then((res) => {
-            return res.json();
-        })
-        .catch((err) => {
-            console.log(`Error ${err}`);
-        })
+        .then((res) => this._checkResponse(res));
     }
 
     deleteCard(cardId) {
@@ -127,12 +83,7 @@ export default class Api {
             headers: this._headers,
             method: 'DELETE'
         })
-        .then((res) => {
-            return res.json();
-        })
-        .catch((err) => {
-            console.log(`Error ${err}`);
-        })
+        .then((res) => this._checkResponse(res));
     }
     
 

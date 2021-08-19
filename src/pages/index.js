@@ -4,7 +4,6 @@ import FormValidator from "../components/FormValidator.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
-import UserAvatar from "../components/UserAvatar.js";
 import Section from "../components/Section.js";
 import PopupDeleteCard from "../components/PopupDeleteCard.js";
 import Api from "../components/Api.js";
@@ -26,14 +25,34 @@ import {
   avatarEditBtn,
   avatarImage,
   profileAvatarImage,
-  avatarUrlInput,
   popupAvatarForm,
   popupDeleteConfirmationCard
 } from "../utils/constants.js";
 
 /*----------------------- Initializing Api Class --------------------*/
 
-const api = new Api();
+const api = new Api({
+  baseUrl: "https://around.nomoreparties.co/v1/group-13",
+  headers: {
+    authorization: "4bb4f649-ce49-4e5f-81c2-ac119aac9e7d",
+    "Content-Type": "application/json",
+  }
+});
+
+/*----------------------- Rendering Data from Api --------------------*/
+
+const initialProfileInfo = api.renderUserInfo();
+const initialCards = api.renderCard();
+
+Promise.all([initialProfileInfo, initialCards])
+  .then(([userData, cards]) => {
+    cardList.renderItems(cards.reverse());
+    user.setUserInfo(userData);
+  })
+  .catch((err) => {
+    console.log(`Error: ${err}`);
+  })
+
 
 /*----------------------- Adding and Updating Cards --------------------*/
 
@@ -48,10 +67,7 @@ const createCard = (data) => {
       handleDeleteClick: (evt) => {
         popupDelete.open(evt, data._id);
       },
-      userData: "ff7f8240f3b1cc171b16d984",
-      // api.renderUserInfo().then((data) => {
-      //    return data; "return data" doesn't work please suggest a way to do that
-      // }),
+      userData: user.getUserId(),
       handleCardLike: status => {
         return status ? api.likeCard(data._id) : api.removeCardLike(data._id);
       }
@@ -72,9 +88,6 @@ const cardList = new Section(
   cardsContainer
 );
 
-api.renderCard().then((data) => {
-  cardList.renderItems(data);
-})
 
 // enabling image popup
 const popupImage = new PopupWithImage(popupImageExpanded);
@@ -87,6 +100,8 @@ const popupDelete = new PopupDeleteCard({
     api.deleteCard(cardId).then(() => {
       cardElement.remove();
       popupDelete.close();
+    }).catch((err) => {
+      console.log(`Error: ${err}`);
     })
   }
 });
@@ -102,6 +117,8 @@ const imageCardFormPopup = new PopupWithForm({
       cardList.addItem(newCard.generateCard());
     }).then(() => {
       imageCardFormPopup.close();
+    }).catch((err) => {
+      console.log(`Error: ${err}`);
     })
   },
 });
@@ -125,19 +142,19 @@ cardAddBtn.addEventListener("click", () => {
 const user = new UserInfo({
   nameElement: profileName,
   titleElement: profileTitle,
+  avatarElement: profileAvatarImage
 });
 
-api.renderUserInfo().then((data) => {
-  user.setUserInfo(data);
-})
 
 const userInfoPopupForm = new PopupWithForm({
   popupSelector: popupProfile,
   formSubmitHandler: (data) => {
     api.sendUserInfo(data)
-    .then(() => {
+    .then((data) => {
       user.setUserInfo(data);
       userInfoPopupForm.close();
+    }).catch((err) => {
+      console.log(`Error: ${err}`);
     });
   },
 });
@@ -157,17 +174,15 @@ profileEditBtn.addEventListener("click", () => {
 
 /*----------------------- Avatar Update--------------------*/
 
-const avatar = new UserAvatar({
-  avatarElement: profileAvatarImage
-})
-
 const avatarUpdateForm = new PopupWithForm({
   popupSelector: avatarImage,
   formSubmitHandler: (data) => {
     api.sendAvatar(data)
     .then((data) => {
-      avatar.setUserAvatar(data);
+      user.setAvatarImg(data);
       avatarUpdateForm.close(data);
+    }).catch((err) => {
+      console.log(`Error: ${err}`);
     })
   }
 })
@@ -175,13 +190,7 @@ const avatarUpdateForm = new PopupWithForm({
 const avatarFormValidator = new FormValidator(formSettings, popupAvatarForm);
 avatarFormValidator.enableValidation();
 avatarEditBtn.addEventListener("click", () => {
-  const getAvatar = avatar.getUserAvatar();
-  avatarUrlInput.value = getAvatar.avatar;
   avatarUpdateForm.open();
 })
 
 avatarUpdateForm.setEventListeners();
-
-api.renderAvatar().then((data) => {
-  avatar.setUserAvatar(data);
-})

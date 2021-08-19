@@ -3,12 +3,13 @@ export default class Card {
         this._text = data.name;
         this._link = data.link;
 
+        this._userData = userData;
         this._likedData = data.likes;
         this._likeCount = data.likes.length;
         this._cardId = data._id;
         this._ownerName = data.owner.name;
         this._ownerId = data.owner._id;
-        this._user = userData;
+        
 
         this._handleCardClick = handleCardClick;
         this._handleDeleteClick = handleDeleteClick;
@@ -26,10 +27,10 @@ export default class Card {
     _setEventListeners() {
         this._deleteBtn = this._element.querySelector('.elements__delete-icon');
 
-        if(!(this._ownerId === this._user)) {
+        if(!(this._ownerId === this._userData)) {
           this._deleteBtn.remove();
           console.log(this._ownerId)
-          console.log(this._user)
+          console.log(this._userData)
         }else {
           this._deleteBtn.addEventListener('click', evt => {
             this._handleDeleteClick(evt);
