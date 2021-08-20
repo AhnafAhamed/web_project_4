@@ -68,7 +68,7 @@ const createCard = (data) => {
         popupDelete.open(evt, data._id);
       },
       userData: user.getUserId(),
-      handleCardLike: status => {
+      handleCardLike: (status) => {
         return status ? api.likeCard(data._id) : api.removeCardLike(data._id);
       }
     },
@@ -190,6 +190,7 @@ const avatarUpdateForm = new PopupWithForm({
 const avatarFormValidator = new FormValidator(formSettings, popupAvatarForm);
 avatarFormValidator.enableValidation();
 avatarEditBtn.addEventListener("click", () => {
+  avatarFormValidator.resetValidation();
   avatarUpdateForm.open();
 })
 

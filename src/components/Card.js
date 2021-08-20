@@ -49,14 +49,14 @@ export default class Card {
     
     _toggleLikeStatus(evt) {
         this._handleCardLike(!evt.target.classList.contains('elements__heart-icon_liked'))
-          .then(data => {
+          .then((data) => {
             evt.target.classList.toggle('elements__heart-icon_liked');
-            this._updateLikesShown(evt, data);
+            this._updateLikesShown(data);
           })
           .catch(err => console.log(`Error ${err}`));
     }
 
-    _updateLikesShown(evt, data) {
+    _updateLikesShown(data) {
       const likeCountElement = this._element.querySelector('.elements__like-counter');
       likeCountElement.textContent = data.likes.length;
     }
@@ -64,7 +64,7 @@ export default class Card {
     _setLikedStatus() {
       this._element.querySelector('.elements__like-counter').textContent = this._likeCount;
 
-      const hasUserLiked = this._likedData.some(likes => likes._id === this._user);
+      const hasUserLiked = this._likedData.some((likes) => likes._id === this._ownerId);
 
       if(hasUserLiked) {
         this._element.querySelector('.elements__heart-icon').classList.add('elements__heart-icon_liked');

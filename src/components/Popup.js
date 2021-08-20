@@ -22,14 +22,12 @@ export default class Popup{
     open(){
         this._popupElement.classList.add("popup_open");
         document.addEventListener('keyup', this._handleEscClose);
-        document.addEventListener('click', this._handleOverlayClose);
 
     }
 
     close() {
         this._popupElement.classList.remove("popup_open")
         document.removeEventListener('keyup', this._handleEscClose);
-        document.removeEventListener('click', this._handleOverlayClose);
     }
 
     setEventListeners() {
